@@ -1,0 +1,156 @@
+<body class="wrapper" >
+	<div class="Wrapper1" ng-hide="edit_view" ng-controller="book_controller">
+		<form name="userForm" novalidate>
+			<header class="heading">
+				<center><h2>Add New Book</h2></center>
+			</header>
+			
+			<div class="form-group row" ng-class="{ 'has-error' : userForm.isbn.$invalid && !userForm.isbn.$pristine}">
+				<label for="example-text-input" class="col-md-2 col-form-label">ISBN *</label>
+				<div class="col-md-10">
+					<input class="form-control" type="text" placeholder="Enter ISBN" id="example-text-input" name="isbn" ng-model="isbn" required>
+					
+					<p ng-show="userForm.isbn.$dirty && userForm.isbn.$invalid && userForm.isbn.$error.required" class="help-block">ISBN is required.</p>					
+				</div>
+			</div>
+			
+			<div class="form-group row" ng-class="{ 'has-error' : userForm.title.$invalid && !userForm.title.$pristine }">
+				<label for="example-text-input" class="col-md-2 col-form-label">Title *</label>
+				<div class="col-md-10">
+					<input class="form-control" type="text" placeholder="Enter Title" id="example-text-input" ng-model="title" name="title" required>
+					
+					<p ng-show="userForm.title.$dirty && userForm.title.$invalid && userForm.title.$error.required" class="help-block">Title is required.</p>
+				</div>
+			</div>
+
+			<div class="form-group row" ng-class="{ 'has-error' : userForm.author.$invalid && !userForm.author.$pristine }">
+				<label for="example-text-input" class="col-md-2 col-form-label">Author *</label>
+				<div class="col-md-10">
+					<input class="form-control" type="text" placeholder="Enter Author name" id="example-text-input" ng-model="author" name="author" required ng-pattern="/^(\D)+$/">
+					
+					<p ng-show="userForm.author.$dirty && userForm.author.$invalid && userForm.author.$error.required" class="help-block">Author is required.</p>
+					
+					<p ng-show="userForm.author.$dirty && userForm.author.$error.pattern" class="help-block">Enter only text.</p>
+				</div>
+			</div>
+			
+			<div class="form-group row" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine }">
+				<label for="example-number-input" class="col-md-2 col-form-label">Price</label>
+				<div class="col-md-10">
+					<input class="form-control" type="number" placeholder="Enter Price" id="example-number-input" ng-model="price">
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label for="example-number-input" class="col-md-2 col-form-label">Available On</label>
+				<div class="col-md-10">
+					<label class="form-check-inline"  ng-repeat="site in sites">
+						<input class="form-check-input" type="checkbox" value={{site}} ng-model="folder[site]">{{site}}
+					</label>
+				</div>
+			</div><!--end of check box row-->
+
+			<div class="form-group row" >
+				<div class="offset-lg-2 col-lg-12">
+					<center><button ng-disabled="userForm.isbn.$invalid || userForm.title.$invalid || userForm.author.$invalid" type="submit" class="btn btn-primary" ng-click="func_save()">Save</button></center>
+				</div>
+			</div>
+			
+			<div class="form-group row" ng-show = "add_success_message">
+				<div class="alert alert-success alert-dismissible fade in" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					Book added successfully!!
+				</div>
+			</div>
+			
+		</form>
+	</div> <!--end of Wrapper1-->	
+			
+	<div class="Wrapper2" ng-hide="add_view" ng-controller="book_controller">
+		<form name="userForm1" novalidate>	
+			<header class="heading">
+				<center><h2>Book Details</h2></center>
+			</header>
+			
+			<div class="form-group row">
+				<label for="example-text-input" class="col-md-2 col-form-label">ISBN *</label>
+				<div class="col-md-10">
+					<span ng-hide="!edit_clicked" ng-bind="newBook.isbn"></span>
+					
+					<input ng-readonly="true" ng-hide="edit_clicked" class="form-control" type="text" value={{newBook.isbn}} id="example-text-input" ng-model="newBook.isbn">
+				</div>
+			</div>
+			
+			<div class="form-group row" ng-class="{ 'has-error' : userForm1.title.$invalid && !userForm1.title.$pristine }">
+				<label for="example-text-input" class="col-md-2 col-form-label">Title *</label>
+				<div class="col-md-10">
+					<span ng-hide="!edit_clicked" ng-bind="newBook.title"></span>
+					<input ng-hide="edit_clicked" class="form-control" type="text" name="title" value={{newBook.title}} id="example-text-input" ng-model="newBook.title" required>
+					
+					<p ng-show="userForm1.title.$dirty && userForm1.title.$error.required" class="help-block">Title is required.</p>
+				</div>
+			</div>
+
+			<div class="form-group row" ng-class="{ 'has-error' : userForm1.author.$invalid && !userForm1.author.$pristine}">
+				<label for="example-text-input" class="col-md-2 col-form-label">Author *</label>
+				<div class="col-md-10">
+					<span ng-hide="!edit_clicked" ng-bind="newBook.author"></span>
+					<input ng-hide="edit_clicked" class="form-control" type="text" name="author" value={{newBook.author}} id="example-text-input" ng-model="newBook.author" required ng-pattern="/^(\D)+$/">
+					
+					<p ng-show="userForm1.author.$dirty && userForm1.author.$invalid && userForm1.author.$error.required" class="help-block">Author is required.</p>
+					
+					<p ng-show="userForm1.author.$dirty && userForm1.author.$error.pattern" class="help-block">Enter only text.</p>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label for="example-number-input" class="col-md-2 col-form-label">Price</label>
+				<div class="col-md-10">
+					<span ng-hide="!edit_clicked" ng-bind="newBook.price"></span>
+					<input ng-hide="edit_clicked" class="form-control" type="number" value={{newBook.price}} Price" id="example-number-input" ng-model="newBook.price">
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label for="example-number-input" class="col-md-2 col-form-label">Available On</label>
+				<div class="col-md-10" ng-hide="!edit_clicked">
+					<span ng-bind="newBook.availableOn"></span>
+				</div>
+				<div class="col-md-10" ng-hide="edit_clicked">
+					<label class="form-check-inline"  ng-repeat="site in sites">
+						<input class="form-check-input" type="checkbox" value={{site}} ng-model="folder[site]">{{site}}
+					</label>
+				</div>
+			</div><!--end of check box row-->
+			<div class="form-group row">
+				<div class="offset-lg-2 col-lg-10">
+					<center>
+						<button type="submit" class="btn btn-primary" ng-click="func_edit(newBook.availableOn)">Edit</button>
+						<button type="submit" ng-hide="!edit_clicked" class="btn btn-primary" ng-click="func_delete(newBook.isbn)">Delete</button>
+						<button ng-disabled="userForm1.title.$invalid || userForm1.author.$invalid" ng-hide="edit_clicked" type="submit" ng-click="func_edit_save(newBook)"  class="btn btn-primary">Save</button>
+					</center>
+				</div>
+			</div>
+			
+			<div class="form-group row" ng-show = "update_success_message">
+				<div class="alert alert-success alert-dismissible fade in" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					Book updated successfully!!
+				</div>
+			</div>
+			
+			<div class="form-group row" ng-show = "delete_success_message">
+				<div class="alert alert-success alert-dismissible fade in" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					Book deleted successfully!!
+				</div>
+			</div>
+		</form>	
+	</div>	<!--end of Wrapper2-->
+</body>

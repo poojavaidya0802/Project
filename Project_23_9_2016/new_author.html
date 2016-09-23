@@ -1,0 +1,182 @@
+<body class="wrapper" >
+	<div class="Wrapper1" ng-hide="edit_view" ng-controller="author_controller">
+		<form class="form-horizontal" name="userForm" novalidate>
+			<header class="heading">
+				<center><h2>Add New Author</h2></center>
+			</header>
+			
+			<div class="form-group row" ng-class="{ 'has-error' : userForm.name.$invalid && !userForm.name.$pristine}">
+				<label for="example-text-input" class="col-md-2 control-label">Name *</label>
+				<div class="col-md-10">
+					<input class="form-control" name="name" type="text" placeholder="Enter your name" id="example-text-input" ng-model="emp_name" required ng-pattern="/^(\D)+$/">
+				
+					<p ng-show="userForm.name.$dirty && userForm.name.$invalid && userForm.name.$error.required" class="help-block">Name is required.</p>
+					
+					<p ng-show="userForm.name.$dirty && userForm.name.$error.pattern" class="help-block">Enter only text.</p>
+					
+				</div>
+			</div>
+
+			<div class="form-group row" ng-class="{ 'has-error' : userForm.emp_id.$invalid && !userForm.emp_id.$pristine }">
+				<label for="example-number-input" class="col-md-2 col-form-label">Employee Id *</label>
+				<div class="col-md-10">
+					<input class="form-control" type="number" placeholder="Enter Employee Id" id="example-number-input" ng-model="empid" name="emp_id" required ng-pattern="/^(\d)+$/">
+					
+					<p ng-show="userForm.emp_id.$dirty && userForm.emp_id.$invalid && userForm.emp_id.$error.required" class="help-block">Employee Id is required.</p>
+					
+					<p ng-show="userForm.emp_id.$invalid && userForm.emp_id.$dirty && !userForm.emp_id.$error.required" class="help-block">Enter only numbers</p>
+				</div>
+			</div>
+			
+			<div class="form-group row" ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }">
+				<label for="example-email-input" class="col-md-2 col-form-label">Email *</label>
+				<div class="col-md-10">
+					<input class="form-control" type="email" placeholder="Enter Email Id" id="example-email-input" ng-model="email" name="email" required>
+					
+					<p ng-show="userForm.email.$dirty && userForm.email.$invalid && userForm.email.$error.required" class="help-block">Email Id is required.</p>
+					
+					<p ng-show="userForm.email.$invalid && !userForm.email.$pristine && userForm.email.$error.email" class="help-block">Enter valid Email Id</p>
+				</div>
+			</div>
+				
+			<div class="form-group row">
+				<label for="example-number-input" class="col-md-2 col-form-label">Skills</label>
+				<div class="col-md-10">
+					<label class="form-check-inline"  ng-repeat="skill in skills">
+						<input class="form-check-input" type="checkbox" value={{skill}} ng-model="folder[skill]">{{skill}}
+					</label>
+				</div>
+			</div> <!--end of check box row-->
+
+			<div class="form-group row">
+				<label for="example-text-input" class="col-md-2 col-form-label">Department</label>
+				<div class="col-md-10">
+					<input class="form-control" type="text" placeholder="Enter your department" id="example-text-input" ng-model="dept">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="example-url-input" class="col-sm-2 col-form-label">Website</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="url" placeholder="Enter website" id="example-url-input" ng-model="website">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="offset-lg-2 col-lg-10">
+					<center><button type="submit" ng-disabled="userForm.name.$invalid || userForm.emp_id.$invalid || userForm.email.$invalid" class="btn btn-primary" ng-click="func_save()">Save</button></center>
+				</div>
+			</div>
+			
+			<div class="form-group row" ng-show = "add_success_message">
+				<div class="alert alert-success alert-dismissible fade in" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					Author added successfully!!
+				</div>
+			</div>
+		</form>
+	</div> <!--end of Wrapper1-->	
+			
+	<div class="Wrapper2" ng-hide="add_view" ng-controller="author_controller">
+		<form name="userForm1" novalidate>
+			<header class="heading">
+				<center><h2>Author Details</h2></center>
+			</header>
+			
+			<div class="form-group row" ng-class="{ 'has-error' : userForm1.name.$invalid && !userForm1.name.$pristine }">
+				<label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
+				<div class="col-sm-10">
+					<span ng-hide="!edit_clicked" ng-bind="newAuthor.name"></span>
+					<input ng-hide="edit_clicked" class="form-control" type="text" placeholder="Enter your name" id="example-text-input" ng-model="newAuthor.name" required ng-pattern="/^(\D)+$/">
+				
+					<p ng-show="userForm1.name.$dirty && userForm1.name.$invalid && userForm1.name.$error.required" class="help-block">Name is required.</p>
+					
+					<p ng-show="userForm1.name.$dirty && userForm1.name.$invalid && userForm1.name.$error.pattern" class="help-block">Enter only text.</p>
+					
+				</div>
+			</div>
+
+			<div class="form-group row" ng-class="{ 'has-error' : userForm1.name.$invalid && !userForm1.name.$pristine }">
+				<label for="example-number-input" class="col-sm-2 col-form-label">Employee Id</label>
+				<div class="col-sm-10">
+					<span ng-hide="!edit_clicked" ng-bind="newAuthor.empid"></span>
+					<input class="form-control" ng-hide="edit_clicked" type="number" placeholder="Enter Employee Id" id="example-number-input" ng-model="newAuthor.empid" required ng-pattern="/^(\d)+$/">
+					
+					<p ng-show="userForm1.emp_id.$dirty && userForm1.emp_id.$invalid && userForm1.emp_id.$error.required" class="help-block">Employee Id is required.</p>
+					
+					<p ng-show="userForm1.emp_id.$invalid && !userForm1.emp_id.$pristine && userForm1.emp_id.$error.pattern" class="help-block">Enter only numbers</p>
+				</div>
+			</div>
+			
+			<div class="form-group row" ng-class="{ 'has-error' : userForm1.name.$invalid && !userForm1.name.$pristine }">
+				<label for="example-email-input" class="col-sm-2 col-form-label">Email</label>
+				<div class="col-sm-10">
+					<span ng-hide="!edit_clicked" ng-bind="newAuthor.email"></span>
+					<input class="form-control" ng-hide="edit_clicked" type="email" placeholder="Enter Email Id" id="example-email-input" ng-model="newAuthor.email" required>
+					
+					<p ng-show="userForm1.email.$dirty && userForm1.email.$invalid && userForm1.email.$error.required" class="help-block">Email Id is required.</p>
+					
+					<p ng-show="userForm1.email.$invalid && !userForm1.email.$pristine && userForm1.email.$error.email" class="help-block">Enter valid Email Id</p>
+				</div>
+			</div>
+				
+			<div class="form-group row">
+				<label for="example-number-input" class="col-sm-2 col-form-label">Skills</label>
+				<div class="col-sm-10" ng-hide="!edit_clicked">
+					<span ng-bind="newAuthor.skills"></span>
+				</div>
+				<div class="col-sm-10" ng-hide="edit_clicked">
+					<label class="form-check-inline"  ng-repeat="skill in skills">
+						<input class="form-check-input" type="checkbox" value={{skill}} ng-model="folder[skill]">{{skill}}
+					</label>
+				</div>
+			</div> <!--end of check box row-->
+
+			<div class="form-group row">
+				<label for="example-text-input" class="col-sm-2 col-form-label">Department</label>
+				<div class="col-sm-10">
+					<span ng-hide="!edit_clicked" ng-bind="newAuthor.department"></span>
+					<input class="form-control" ng-hide="edit_clicked" type="text" placeholder="Enter your department" id="example-text-input" ng-model="newAuthor.department">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="example-url-input" class="col-sm-2 col-form-label">Website</label>
+				<div class="col-sm-10">
+					<span ng-hide="!edit_clicked" ng-bind="newAuthor.website"></span>
+					<input ng-hide="edit_clicked" class="form-control" type="url" placeholder="Enter website" id="example-url-input" ng-model="newAuthor.website">
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="offset-lg-2 col-lg-10">
+					<center>
+						<button type="submit" class="btn btn-primary" ng-click="func_edit(newAuthor.skills)">Edit</button>
+						<button type="submit" ng-hide="!edit_clicked" class="btn btn-primary" ng-click="func_delete(newAuthor)">Delete</button>
+
+						<button ng-hide="edit_clicked" type="submit" ng-click="func_edit_save(newAuthor)" class="btn btn-primary">Save</button>
+					</center>
+				</div>
+			</div>
+			
+			<div class="form-group row" ng-show = "update_success_message">
+				<div class="alert alert-success alert-dismissible fade in" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					Author updated successfully!!
+				</div>
+			</div>
+			
+			<div class="form-group row" ng-show = "delete_success_message">
+				<div class="alert alert-success alert-dismissible fade in" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					Author deleted successfully!!
+				</div>
+			</div>
+		</form>	
+	</div>	<!--end of Wrapper2-->
+</body>

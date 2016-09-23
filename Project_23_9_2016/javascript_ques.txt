@@ -1,0 +1,20 @@
+1) Create an array : 
+	a) var arr = ["apple","mango","pineapple"];
+	   var arr = [true,"Hi",7];
+	b) var arr = new Array("apple","mango","banana");
+	   var arr = new Array(100);
+	   var arr = new Array();
+	
+	Length : arr.length;
+	
+	arr[0];
+	
+	Adding or removing elements:
+	push("item") : adds at end
+	pop() : removes one from end
+	unshift("item") : adds at start
+	shift() : removes one from start
+	delete[position] : leaves element at position undefined
+	splice(index,how_many_to_delete,items to add)
+
+2)	

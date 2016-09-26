@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
+</head>
+
+<script>
+	function GetScore(team) {
+		$.ajax({
+			type: "POST",
+			url: "/cgi-bin/score.cgi", 
+			data: "team=" + team,
+			error: function() { 
+				alert("script call was not successful");
+			}, 
+			success: function(html){
+				if (html) {
+					$('#score').html(html);
+				}
+				else {
+					alert("Data is not available");
+				}
+			}
+		});
+	}
+</script>
+
+<body>
+	<div id="scorepane">
+		<span id="score"><span>
+		<input type="button" value="Refresh" onclick="GetScore('india')"></input>
+	</div>
+</body>
+</html>

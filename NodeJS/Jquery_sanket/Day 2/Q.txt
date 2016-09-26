@@ -1,0 +1,42 @@
+Lookups
+---------------------
+1.
+
+jQuery('#someid');
+jQuery('.someclass');
+jQuery("[name='somename']");
+jQuery("div#someid");
+
+
+2.
+
+jQuery("#somediv").find('#childdiv');
+jQuery("#somediv").children("[name='somename']");
+
+
+3.
+jQuery("#somediv").find('div#childdiv');
+
+
+
+HTML
+---------------------
+
+
+<body>
+
+<span id="someid"></span>
+<span class="someclass"></span>
+<span name="somename"></span>
+
+
+<div id="somediv">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div id='childdiv'></div>
+</div>
+
+
+</body>

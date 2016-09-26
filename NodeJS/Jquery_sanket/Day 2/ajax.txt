@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+	<div id="scorepane">
+		<span id="score"><span>
+		<input type="button" value="Refresh"></input>
+	</div>
+</body>
+</html>

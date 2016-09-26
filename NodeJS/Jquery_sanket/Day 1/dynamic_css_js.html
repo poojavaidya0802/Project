@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+			font-family: Calibri;
+		}
+		.even {
+			background-color: aquamarine;
+		}
+		.odd {
+			background-color: wheat;
+		}
+		.content {
+			text-align: center;
+		}
+		table, th, td {
+			border: 1px solid black;
+		}
+		table {
+			border-collapse: collapse;
+		}
+		.expenses {
+			margin: 0px auto;
+		}
+	</style>
+	<script>
+		// To apply alternating background color to each row
+		function ApplyAlternatingCss(tableid) {
+			// Get the table
+			var table = document.getElementById(tableid);
+
+			// Get the rows
+			var rows = table.rows;
+
+			for (var i = 0; i < rows.length; i++) {
+				if (i % 2) {
+					rows[i].className = "even";
+				}
+				else {
+					rows[i].className = "odd";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="content">
+		<h1>Expense Account</h1>
+		<table id="mytable" class="expenses">
+			<tr>
+				<th>Person</th><th>Expenses (in Rs)</th>
+			</tr>
+			<tr>
+				<td>Amol</td><td>1000</td>
+			</tr>
+			<tr>
+				<td>Anurag</td><td>500</td>
+			</tr>
+			<tr>
+				<td>Gaurav</td><td>400</td>
+			</tr>
+			<tr>
+				<td>Karan</td><td>700</td>
+			</tr>
+			<tr>
+				<td>Pooja</td><td>600</td>
+			</tr>
+		</table>
+		<br />
+		<input type="button" value="Apply Style!" onclick="ApplyAlternatingCss('mytable');"/>
+	</div>
+</body>
+</html>

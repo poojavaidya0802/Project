@@ -1,0 +1,148 @@
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src='https://cdn.jsdelivr.net/lodash/4.14.1/lodash.js'></script>
+	<script src='https://cdn.jsdelivr.net/platform.js/1.3.1/platform.js'></script>
+	<script src='benchmark.js'></script>
+	<script>
+		var suite = new Benchmark.Suite;
+
+		// add tests
+		suite.add('Find without passing tagname', function() {
+			jQuery('body').find("[name='myinput']");
+		})
+		.add('Find with tagname', function() {
+			jQuery('body').find("input[name='myinput']");
+		})
+		// add listeners
+		.on('cycle', function(event) {
+		  console.log(String(event.target));
+		})
+		.on('complete', function() {
+		  console.log('Fastest is ' + this.filter('fastest').map('name'));
+		})
+		// run async
+		.run({ 'async': true });
+</script>
+</head>
+
+<body>
+	
+		<input type="button" value="Change border of input in 10th Section!" onclick="ChangeColor();" />
+		<div id="section" class="section" sectiontype="uniquename1">
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<input name="myinput" type="text" value="secretvalue1">
+		</div>
+		<div id="section" class="section" sectiontype="uniquename2">
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<input name="myinput" type="text" value="secretvalue2">
+		</div>
+		<div id="section" class="section" sectiontype="uniquename3">
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<input name="myinput" type="text" value="secretvalue3">
+		</div>
+		<div id="section" class="section" sectiontype="uniquename4">
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<input name="myinput" type="text" value="secretvalue4">
+		</div>
+		<div id="section" class="section" sectiontype="uniquename5">
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<input name="myinput" type="text" value="secretvalue5">
+		</div>
+		<div id="section" class="section" sectiontype="uniquename6">
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<input name="myinput" type="text" value="secretvalue6">
+		</div>
+		<div id="section" class="section" sectiontype="uniquename7">
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<input name="myinput" type="text" value="secretvalue7">
+		</div>
+		<div id="section" class="section" sectiontype="uniquename8">
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<input name="myinput" type="text" value="secretvalue8">
+		</div>
+		<div id="section" class="section" sectiontype="uniquename9">
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<input name="myinput" type="text" value="secretvalue9">
+		</div>
+		<div id="section" class="section" sectiontype="uniquename10">
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<div>Content!</div>
+			<input id="myinput" type="text" value="secretvalue10">
+		</div>
+	
+	
+</body>
+
+</html>
+
+

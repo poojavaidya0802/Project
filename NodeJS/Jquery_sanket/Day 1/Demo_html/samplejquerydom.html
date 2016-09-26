@@ -1,0 +1,52 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Validate Inputs</title>
+	<style>
+		body {
+			font-family: Calibri;
+		}
+		.content {
+			text-align: center;
+		}
+		.content table {
+			margin: 0px auto;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script>
+	// Validate the inputs on this page.
+	function ValidateForm() {
+
+	}
+
+	// Reset any messages that were displayed.
+	function ResetMessage() {
+
+	}
+	</script>
+</head>
+<body>
+	<div class="content">
+		<h1>Validate Inputs</h1>
+		<form>
+			<div>
+				<span>Name:</span>
+				<input id="name" type="text" />
+				<span id="namemessage"></span>
+			</div>
+			<br / >
+			<div>
+				<span>Age:</span>
+				<input id="age" type="text" />
+				<span id="agemessage"></span>
+			</div>
+			<br / >
+			<div>
+				<input type="button" value="Validate Inputs" onclick="ValidateForm();">
+				<input type="button" value="Reset Messages" onclick="ResetMessage();">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

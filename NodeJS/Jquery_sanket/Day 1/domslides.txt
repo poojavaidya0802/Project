@@ -1,0 +1,78 @@
+1. Quick Questions
+What is Javascript ?
+
+What are it's uses ?
+	- Interactivity with browser!!
+
+2. DOM (Document Object Model)
+- DOM is a programming interface for HTML and XML documents.
+- It provides standards to represent a document and way to manipulate it.
+
+- Representation
+	- Tree like structure of nodes present inside of a document. 
+	- Each node is an object having corresponding properties and methods.
+
+- Manipulation
+	- Specifies how document can be accessed by particular way. For example, the standard DOM specifies that the getElementsByTagName method in the code below must return a list of all the <P> elements in the document.
+	
+	var paragraphs = document.getElementsByTagName("P");
+	// paragraphs[0] is the first <p> element
+	// paragraphs[1] is the second <p> element, etc.
+	alert(paragraphs[0].nodeName);
+
+3. How Do I Access the DOM structure with JS?
+- You don't have to do anything special to begin using the DOM.
+- When you create a <script> you can immediately begin the manipulation of the document itself.
+- DOM programming which displays an alert message by using the alert() function from the window object
+	<body onload="window.alert('welcome to my home page!');">
+
+4. Core Interfaces in the DOM
+	- Returns a reference to the element having id "myid"
+		document.getElementById('myid');
+	
+	- Returns all references to elements having name "myname"
+		document.getElementsByName(name);
+	
+	- Returns all references to div elements.
+		element.getElementsByTagName(tagname);
+	
+	- Returns all references to elements having class name "myclass"
+		element.getElementsByClassName(classname);
+	
+	- Creates the new span element and stores it reference in variable "element"
+		var element = document.createElement('span');
+		
+	- Appends new span element inside the element having id "parent"
+		var parentnode = document.getElementById('parent');
+		var element = document.createElement('span');
+		parentnode.appendChild(element);
+
+	- Sets or gets the HTML syntax describing the element's descendants.
+		var htmlinsideelement = element.innerHTML;
+	
+	- Adds a new attribute or changes the value of an existing attribute on the specified element.
+		element.setAttribute(name, value);
+	
+	- Returns the value of a specified attribute on the element
+		var attribute = element.getAttribute(attributeName);
+		
+	- Registers the specified listener on the EventTarget.
+		target.addEventListener(type, listener)
+		
+		type - A string representing the event type to listen for.
+		listener - The object that receives a notification when an event occurs.Generally it is simple JavaScript function.
+
+5. Lets try to access document elements
+// dom.html
+// Do the following using core Interfaces in the DOM
+Pick up all the div elements.
+Pick up the element having id “myelement”.
+Pick up the div having id “mydiv”.
+Pick up all the elements with class “content”.
+Pick up all the links with “www.cybage.com”.
+Create new span element and append inside element having id "spanparent"
+Add click listener to document which should trigger when you click anywhere inside the document.
+
+6. Lets write useful code now
+Create the usual form with various form elements, and add in validation
+

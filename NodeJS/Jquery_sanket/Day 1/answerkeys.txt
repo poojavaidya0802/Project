@@ -1,0 +1,28 @@
+\\pune-share\Training_Cyb\Priyanka Shinde\FET_FrTP-July'2016\1.TraininContent
+
+
+
+
+
+
+
+
+
+
+
+
+
+++ 2nd demo
+	- jQuery('div')
+	- jQuery('#myelement')
+	- jQuery('div#mydiv')
+	- jQuery('.content')
+	- jQuery("[href='www.cybage.com']")
+	- jQuery("[name='button']")
+
+
+++ 3rd demo
+	- jQuery('#grandpa').find('div');
+	- jQuery('#grandpa').children('div');
+	- jQuery('#grandpa').find('div#me');
+	- jQuery('#grandpa').find();
